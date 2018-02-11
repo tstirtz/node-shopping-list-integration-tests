@@ -142,3 +142,33 @@ describe('Shopping List', function() {
       });
   });
 });
+
+
+describe('Recipes', function(){
+    before(function(){
+        return runServer();
+    });
+
+    after(function(){
+        return closeServer();
+    });
+
+    it('Should return recipe items with a GET request', function(){
+        //make a GET request to have something to compare test to
+        //
+        return chai.request(app)
+            .get('/recipes')
+            .then(function(res){
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body).to.be.a('array');
+                expect(res.body.length).to.be.at.least(1);
+
+                const expectedKeys = ['id', 'name', 'ingredients'];
+                res.body.forEach(function(item){
+                    expect(item).to.be.a('object');
+                    expect(item).to.include.keys(expectedKeys);
+                });
+            })
+    });
+});
