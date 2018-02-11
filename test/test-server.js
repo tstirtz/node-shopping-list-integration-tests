@@ -177,7 +177,7 @@ describe('Recipes', function(){
             const newItem = {name: "coffee", ingredients: ['water', 'coffee grounds']}
             .post('/recipes')
             .send(newItem)
-            .then(function(){
+            .then(function(res){
                 //expect status code to be 201
                 expect(res).to.have.status(201);
                 //expect length to be at least 1
@@ -193,4 +193,24 @@ describe('Recipes', function(){
             });
     });
 
+    it('Should update existing recipe item with PUT', function(){
+        const updateItem = {
+            name: 'foo',
+            ingredients: ['bar', 'bizz', 'bang']
+        };
+        return chai.request(app)
+            //Test that id of put item matches existing items
+            //make get request to compare id's
+            .get('/recipes')
+            .then(function(res){
+                updateItem.id = res.body[0].id;
+                return chai.request(app)
+                    .put(`/recipes/${updateItem.id}`)
+                    .send(updateItem)
+            })
+            .then(function(res){
+                //expect status code 204
+                expect(res).to.have.status(204);
+            });
+    });
 });
