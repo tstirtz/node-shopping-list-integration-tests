@@ -169,6 +169,28 @@ describe('Recipes', function(){
                     expect(item).to.be.a('object');
                     expect(item).to.include.keys(expectedKeys);
                 });
-            })
+            });
     });
+
+    it('Should post new recipe items with POST', function(){
+        return chai.request(app)
+            const newItem = {name: "coffee", ingredients: ['water', 'coffee grounds']}
+            .post('/recipes')
+            .send(newItem)
+            .then(function(){
+                //expect status code to be 201
+                expect(res).to.have.status(201);
+                //expect length to be at least 1
+                //expect body to be object
+                expect(res).to.be.a('object');
+                //expect type to be json
+                expect(res).to.be.json;
+                //expect id to be present
+                expect(res.body.id).to.not.equal(null);
+                //expect to have keys id, name, and ingrediets
+                expect(res.body).to.include.keys('id', 'name', 'ingredients');
+                expect(res.body).to.deep.equal(Object.assign(newItem, res.body.id));
+            });
+    });
+
 });
