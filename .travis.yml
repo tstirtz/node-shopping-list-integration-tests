@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: XE0dw2pbUKAFi2ddYIYJj2UV+XuuLt1AXn9zxrpHR99P0xm3LhpUbb99ydllmHw1neqRsip9EOU/aZAwC9bzjg+TuhP2PWtaS2XlU86KTpEHbMkDJMw/lgTZhF/kmBNePPdXnaCN3wDX8gNaCz8C1rdsN2OG7I1AsItk5s8Di6qu5el7KmyL6tyjLf+qtmCCuRQirym8UGE4nzCaQLIxviCz9cGZ6CQWCOCkj2nbNM33+4ksjbeKdPfWjqOiZi9GFQcbxd0Li6wk0XJtG+NhQ0UEb1u9x1/YW+hCTZPVyWqryA4z/Ods/0maT33m2ZeClCW2HYqIzoG4sDPsf6jBiB8PLPZs87tj+DQDt4ZCQ2Ak+omH6JM2s/AU1q+bf4eHLzSnWZgpzezJitBW3MlW9zcmYFjk3GNYTO2Aq8PlPj3+e+JDrwV6Vyifqlx4zFdluytwetfupiwjg9nerjwdP872//35OWjnCCyDQ76vCx0KiN9flFIpvxym2PHUj5ZFuCEIfuzbsV+TYWZ8G/m/k8r162Gxr23iC2j7ZohCKb/tD0q/HijMAHgIMW9/TYiw1srSaM9MKfjeuL9LxNBIaPgDTkc+cwWOtY0OU5sul9KNiCR/LzFascl0dhVTKk9qDkYCm6Vywxlj43K/e224EQe8Cgew1GYRMBIVV4RQDKk=
+  app: mysterious-wave-40955
+  on:
+    repo: tstirtz/node-shopping-list-integration-tests
